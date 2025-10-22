@@ -15,10 +15,6 @@ import com.rrhh.sistema.service.AuthService;
 
 @RestController
 @RequestMapping("/api/auth")
-@CrossOrigin(
-	    origins = "http://localhost:4200",
-	    allowCredentials = "true"
-	)
 public class AuthController {
 	private final AuthService authService;
 

@@ -23,13 +23,12 @@ public class SecurityConfig {
     @Bean
 	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
 		http
-                .cors(cors -> cors.disable())
-		        .csrf(csrf -> csrf.disable())
+                .csrf(csrf -> csrf.disable())
 		        .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
 		        .authorizeHttpRequests(authz -> authz
                     .requestMatchers("/api/auth/**").permitAll()  // ✅ Login sin autenticación
                     .requestMatchers("/api/users/**").authenticated()  // ✅ Requiere token
-                    .requestMatchers("/api/employees/**").authenticated()  // ✅ Requiere token
+                    .requestMatchers("/api/employee/**").authenticated()  // ✅ Requiere token
 				    .anyRequest().authenticated()
 		).addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 		return http.build();

@@ -1,6 +1,7 @@
 package com.rrhh.sistema.service;
 
 import com.rrhh.sistema.model.Employee;
+import jakarta.annotation.PostConstruct;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
@@ -13,6 +14,7 @@ import java.util.stream.Collectors;
 public class EmployeeService {
     private List<Employee> employeeList = new ArrayList<>();
 
+    @PostConstruct
     private void init(){
         employeeList = new ArrayList<>(List.of(
                 new Employee(

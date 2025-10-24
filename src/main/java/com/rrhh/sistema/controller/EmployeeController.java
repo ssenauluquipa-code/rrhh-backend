@@ -2,7 +2,7 @@ package com.rrhh.sistema.controller;
 
 import com.rrhh.sistema.model.Employee;
 import com.rrhh.sistema.service.EmployeeService;
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -11,10 +11,14 @@ import java.util.List;
 @RequestMapping("/api/employee")
 public class EmployeeController {
 
-    @Autowired
+    //@Autowired
     private EmployeeService employeeService;
 
-    @GetMapping("/empleados")
+    public EmployeeController(EmployeeService employeeService){
+        this.employeeService = employeeService;
+    }
+
+    @GetMapping("/lista")
     public List<Employee> getEmployee(){
         return employeeService.getEmployeeList();
     }
